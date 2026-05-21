@@ -20,7 +20,7 @@ spec:
       containers:
         - name: hw28-backend
 
-          image: seglianik/hw_28_final-project-python-backend:latest
+          image: seglianik/hw_28_final-project-python-backend:v2
 
           imagePullPolicy: Always
 
