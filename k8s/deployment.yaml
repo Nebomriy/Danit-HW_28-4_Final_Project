@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw28-backend
+  namespace: hw28
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: hw28-backend
+
+  template:
+    metadata:
+      labels:
+        app: hw28-backend
+
+    spec:
+      containers:
+        - name: hw28-backend
+
+          image: seglianik/hw_28_final-project-python-backend:latest
+
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8080
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
