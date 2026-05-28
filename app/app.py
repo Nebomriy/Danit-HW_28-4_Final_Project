@@ -10,7 +10,7 @@ def home():
 
     return {
         "status": "ok",
-        "version": "v2",
+        "version": "v3",
         "hostname": hostname,
         "ip": ip_address
     }, 200
