@@ -20,19 +20,19 @@ resource "helm_release" "nginx_ingress" {
     value = "https"
   }
   set {
-    name = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
     value = "internet-facing"
   }
   set {
-    name = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
     value = "nlb"
   }
   set {
-    name = "controller.service.targetPorts.http"
+    name  = "controller.service.targetPorts.http"
     value = "http"
   }
   set {
-    name = "controller.service.targetPorts.https"
+    name  = "controller.service.targetPorts.https"
     value = "http"
   }
 }

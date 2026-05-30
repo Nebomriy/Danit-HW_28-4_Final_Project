@@ -44,9 +44,9 @@ resource "kubernetes_ingress_v1" "argocd" {
     namespace = kubernetes_namespace.argocd.metadata[0].name
 
     annotations = {
-      "kubernetes.io/ingress.class"                    = "nginx"
-      "external-dns.alpha.kubernetes.io/hostname"      = "argocd.${local.domain_name}"
-      "nginx.ingress.kubernetes.io/backend-protocol"   = "HTTP"
+      "kubernetes.io/ingress.class"                  = "nginx"
+      "external-dns.alpha.kubernetes.io/hostname"    = "argocd.${local.domain_name}"
+      "nginx.ingress.kubernetes.io/backend-protocol" = "HTTP"
     }
   }
 
@@ -74,6 +74,9 @@ resource "kubernetes_ingress_v1" "argocd" {
       }
     }
   }
+}
+resource "kubernetes_manifest" "argocd_application_hw28_backend" {
+  manifest = yamldecode(file("${path.module}/../../argocd/application.yaml"))
 
   depends_on = [
     helm_release.argocd
